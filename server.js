@@ -6,7 +6,7 @@ const webpack = require('webpack');
 const winston = require('winston');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const DOMAIN = '0.0.0.0';
 
 const config = require('./webpack.config');
