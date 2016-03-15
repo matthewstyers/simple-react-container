@@ -8,7 +8,7 @@
   },
   "ecmaFeatures": {
     "arrowFunctions": true,
-    "blockBindings": true, 
+    "blockBindings": true,
     "classes": true,
     "defaultParams": true,
     "destructuring": true,
