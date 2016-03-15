@@ -1,18 +1,18 @@
 const path = require('path');
 const webpack = require('webpack');
 
-function getEntrySources(sources) {
-  if (process.env.NODE_ENV !== 'production') {
-    sources.push('webpack-hot-middleware/client');
-  }
-
-  return sources;
-}
+// function getEntrySources(sources) {
+//   if (process.env.NODE_ENV !== 'production') {
+//     sources.push('webpack-hot-middleware/client');
+//   }
+//
+//   return sources;
+// }
 
 module.exports = {
   devtool: process.env.NODE_ENV !== 'production' ? 'eval-source-map' : '',
   entry: {
-    bundle: getEntrySources(['./src/index']),
+    bundle: './src/index',
   },
   output: {
     publicPath: '/dist/',
@@ -51,21 +51,13 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loaders: ['react-hot', 'babel-loader?stage=0', 'eslint-loader'],
+        loaders: ['babel-loader'],
         exclude: /node_modules/,
       },
       {
         test: /\.json$/,
         loader: 'json-loader',
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
-        loader: 'url-loader?prefix=img/&limit=5000',
-      },
-      {
-        test: /\.(woff|woff2|ttf|eot)$/,
-        loader: 'url-loader?prefix=font/&limit=5000',
-      },
+      }
     ],
   },
 };
