@@ -5,13 +5,14 @@ FROM node:5.7-wheezy
 # Creates a cache layer for node_modules, so npm install only runs if package.json has changed.
 ADD package.json /tmp/package.json
 RUN cd /tmp && npm install
-RUN mkdir -p /app/client && cp -a /tmp/node_modules /app/client
+RUN mkdir -p /app/client && cp -a /tmp/node_modules /app
 
-ADD . /app/client
+RUN npm install -g nodemon
+COPY . /app/client
 
 WORKDIR /app/client
 
-EXPOSE 80
+EXPOSE 8080
 EXPOSE 3000
 
 CMD npm start

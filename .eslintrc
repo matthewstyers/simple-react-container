@@ -1,13 +1,14 @@
 {
   "parser": "babel-eslint",          // https://github.com/babel/babel-eslint
   "plugins": ["react"],               // https://github.com/yannickcr/eslint-plugin-react
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "env": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
     "browser": true,                 // browser global variables
     "node": true                     // Node.js global variables and Node.js-specific rules
   },
   "ecmaFeatures": {
     "arrowFunctions": true,
-    "blockBindings": true,
+    "blockBindings": true, 
     "classes": true,
     "defaultParams": true,
     "destructuring": true,

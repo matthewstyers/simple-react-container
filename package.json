@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "description": "A boiler-plate setup for React/Redux applications",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "NODE_ENV=production webpack -p",
+    "clean": "rimraf dist coverage",
+    "postinstall": "npm run clean; npm run build;",
+    "start": "nodemon server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.js'",
     "test:watch": "npm run test -- --watch"
   },
@@ -31,12 +34,16 @@
     "jquery": "2.2.1",
     "jsdom": "8.1.0",
     "mocha": "2.4.5",
+    "nodemon": "1.8.1",
     "react-addons-test-utils": "0.14.7",
     "webpack": "1.12.14",
+    "webpack-dev-middleware": "1.2.0",
+    "webpack-hot-middleware": "2.5.0",
     "webpack-dev-server": "1.14.0"
   },
   "dependencies": {
     "babel-preset-stage-1": "6.1.18",
+    "express": "4.13.3",
     "lodash": "3.10.1",
     "react": "0.14.7",
     "react-dom": "0.14.7",
@@ -47,7 +54,9 @@
     "redux-localstorage": "0.4.0",
     "redux-logger": "2.6.1",
     "redux-router": "1.0.0-beta5",
-    "redux-thunk": "2.0.1"
+    "redux-thunk": "2.0.1",
+    "rimraf": "2.4.3",
+    "winston": "2.1.1"
 
   }
 }

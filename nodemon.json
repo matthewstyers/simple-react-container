@@ -1,0 +1,9 @@
+{
+  "ignore": [".git/*", "node_modules/*", "dist/*", "build/*"],
+  "legacyWatch": true,
+  "verbose": true,
+  "port": 8080,
+  "events": {
+    "restart": "webpack -d"
+  }
+}
