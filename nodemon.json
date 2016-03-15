@@ -1,9 +1,10 @@
 {
-  "ignore": [".git/*", "node_modules/*", "dist/*", "build/*"],
+  "ext": "js",
+  "ignore": [".git/*", "node_modules/**/node_modules", "dist/*", "build/*",
+    "src/*", "tests/*"
+  ],
   "legacyWatch": true,
-  "verbose": true,
   "port": 8080,
-  "events": {
-    "restart": "webpack -d"
-  }
+  "verbose": true,
+  "watch": ["server.js"]
 }
