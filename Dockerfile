@@ -7,7 +7,7 @@ ADD package.json /tmp/package.json
 RUN cd /tmp && npm install
 RUN mkdir -p /app/client && cp -a /tmp/node_modules /app
 
-RUN npm install -g nodemon
+RUN npm install -g nodemon webpack
 COPY . /app/client
 
 WORKDIR /app/client
