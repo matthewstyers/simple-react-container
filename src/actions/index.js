@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-export const FETCH_POSTS = 'FETCH_POSTS';
-const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
-const API_KEY = '?key=ihopethiskeyisunique';
+export const FETCH_TECHNOLOGIES = 'FETCH_TECHNOLOGIES';
+const HOSTNAME = 'http://reduxblog.herokuapp.com/api';
+const API_ROOT = 'api/v2';
 
-export function fetchPosts() {
-  const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
+export function fetchTechnologies() {
+  const request = axios.get(`${HOSTNAME}/${API_ROOT}`);
   return {
-    type: FETCH_POSTS,
+    type: FETCH_TECHNOLOGIES,
     payload: request
   };
 }

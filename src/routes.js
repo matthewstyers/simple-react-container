@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/app';
-import TechnologyIndex from './components/technology_index';
+import TechnologyList from './components/technology/list';
 
 export default(
   <Route path="/" component={App}>
-    <IndexRoute component={TechnologyIndex} />
+    <IndexRoute component={TechnologyList} />
   </Route>
 );

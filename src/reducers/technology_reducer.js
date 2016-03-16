@@ -1,12 +1,12 @@
-import {FETCH_TECHNOLOGY} from '../actions/index';
+import {FETCH_TECHNOLOGIES} from '../actions/index';
 const INITIAL_STATE = {
   all: [],
-  technology: null
+  technologyList: null
 };
 
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
-  case FETCH_TECHNOLOGY:
+  case FETCH_TECHNOLOGIES:
     return {
       ...state,
       all: action.payload.data
