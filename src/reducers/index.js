@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import TechnologyReducer from './technology_reducer';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  technologies: TechnologyReducer
 });
 
 export default rootReducer;
