@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchTechnologies } from '../actions/index';
+import { fetchTechnologies } from '../../actions/index';
 
 class TechnologyList extends Component {
   componentWillMount() {
@@ -11,7 +11,6 @@ class TechnologyList extends Component {
     return (
       <div>
         Balls, man.
-        {this.props.children}
       </div>
     );
   }
