@@ -10,10 +10,14 @@ const webpack = require('webpack');
 // }
 
 module.exports = {
-  devtool: process.env.NODE_ENV !== 'production' ? 'eval-source-map' : '',
-  entry: {
-    bundle: './src/index',
+  devtool: process.env.NODE_ENV !== 'production' ? 'cheap-module-eval-source-map' : '',
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './'
   },
+  entry: [
+    './src/index.js'
+  ],
   output: {
     publicPath: '/dist/',
     filename: 'bundle.js',
@@ -59,5 +63,8 @@ module.exports = {
         loader: 'json-loader',
       }
     ],
-  }
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
 };
