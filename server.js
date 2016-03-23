@@ -10,14 +10,14 @@ const app = express();
 const config = require('./webpack.config');
 const compiler = webpack(config);
 const PORT = process.env.PORT || 8080;
-const DOMAIN = process.env.HOSTNAME || '0.0.0.0';
+const DOMAIN = process.env.ROOT_URL || 'localhost';
 
 if (process.env.NODE_ENV === 'development') {
   winston.info('Bundling webpack... Please wait.');
 
   app.use(require('webpack-dev-middleware')(compiler, {
     publicPath: config.output.publicPath,
-    poll: 1000 // poll files once per second
+    poll: true // poll files once per second
   }));
 
   app.use(require('webpack-hot-middleware')(compiler));
