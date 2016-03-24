@@ -5,34 +5,44 @@ const express = require('express');
 const webpack = require('webpack');
 const winston = require('winston');
 
-const app = express();
-
 const config = require('./webpack.config');
 const compiler = webpack(config);
 const PORT = process.env.PORT || 8080;
 const DOMAIN = process.env.ROOT_URL || 'localhost';
 
 if (process.env.NODE_ENV === 'development') {
-  winston.info('Bundling webpack... Please wait.');
+  const webpackDevServer = require('webpack-dev-server');
 
-  app.use(require('webpack-dev-middleware')(compiler, {
+
+  const server = new webpackDevServer(compiler, {
     publicPath: config.output.publicPath,
-    poll: true // poll files once per second
-  }));
+    historyApiFallback: true,
+    contentBase: './',
+    watchOptions: {
+      poll: true
+    }
+  });
 
-  app.use(require('webpack-hot-middleware')(compiler));
+  server.listen(PORT, (err) => {
+    if (err) {
+      winston.error(err);
+      return;
+    }
+  });
+  // app.use(require('webpack-hot-middleware')(compiler));
   winston.info(`Listening at http://${ DOMAIN }:${ PORT }`);
+} else {
+  const app = express();
+  app.use('/dist', express.static('dist'));
+
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  });
+
+  app.listen(PORT, (err) => {
+    if (err) {
+      winston.error(err);
+      return;
+    }
+  });
 }
-
-app.use('/dist', express.static('dist'));
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.listen(PORT, (err) => {
-  if (err) {
-    winston.error(err);
-    return;
-  }
-});
