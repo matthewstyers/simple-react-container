@@ -1,9 +1,0 @@
-{
-  "legacyWatch": true,
-  "port": 8080,
-  "verbose": true,
-  "watch": ["server.js", "package.json"],
-  "execMap": {
-    "json": "npm install"
-  }
-}

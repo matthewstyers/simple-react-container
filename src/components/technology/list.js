@@ -10,7 +10,7 @@ class TechnologyList extends Component {
   render() {
     return (
       <div>
-        Balls man.
+        Balls, man
       </div>
     );
   }
